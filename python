@@ -1,0 +1,398 @@
+#file operation and tell and seek method
+fp=open("rr.txt",'w')
+fp.write("hello my name is rishi\n")
+fp.close()
+
+
+fp=open("rr.txt",'r')
+print(fp.read())
+fp.close()
+
+
+fp=open("rr.txt",'r')
+print(fp.readline())
+fp.close()
+
+fp=open("rr.txt",'a')
+fp.write("im playboy")
+fp.close()
+
+fp=open("rr.txt",'r')
+print(fp.readlines())
+
+print(fp.tell())
+print(fp.seek(14,0))
+print(fp.tell())
+
+#exceptions
+#index error
+try:
+    even_no=[2,4,6,8]
+    print(even_no[5])
+except ZeroDivisionError:
+    print("zero cannot be taken in denominator")
+except IndexError:
+    print("array index does not exist")
+
+
+#assert keyword
+
+try:
+    a=int(input("enter the number"))
+    assert a%2==0
+except:
+    print("the entered number is odd")
+else:
+    print("done2")
+
+#try except finally
+try:
+    a=3/0
+    print(a)
+except ZeroDivisionError:
+    print("denominator cannot be zero")
+finally:
+    print("enter the number again")
+
+#program on eneterd month
+def get_month():
+    month=int(input("enter the value of month"))
+    if month<1 or month>12:
+        raise ValueError("the value of month should be between 1 and 12")
+    return month
+valid=False
+while not valid:
+    try:
+        month=get_month()
+        valid=True
+        if month==1:
+            print("january")
+        elif month==2:
+            print("february")
+        elif month==3:
+            print("march")
+        elif month==4:
+            print("april")
+        elif month==5:
+            print("may")
+        elif month==6:
+            print("june")
+        elif month==7:
+            print("july")
+        elif month==8:
+            print("august")
+        elif month==9:
+            print("september")
+        elif month==10:
+            print("october")
+        elif month==11:
+            print("november")
+        elif month==12:
+            print("december")
+        
+    except ValueError:
+        print("enter value again")
+
+#regular expression
+#regular expression
+import re
+str="hello im rishi"
+m1=re.search("im",str)
+print(m1)
+
+txt="computer"
+p=re.findall("c.{1}",txt)
+print(p)
+
+pattern=re.compile("[A-Z]")
+print(pattern.findall("Larning Python"))
+
+pattern1=re.compile("\d+")
+print(pattern1.findall("todays date is 30th jan 2022"))
+
+
+x= re.findall("^hello", str)
+x1= re.findall("rishi$", str)
+print(x)
+print(x1)
+
+#program
+
+mob_no=["7098765432","8487637828","8487637828","8487637828","8487637828","8487637828","8487637828","8487637828","8487637828","8487637828"]
+
+for val in mob_no:
+    if re.match("[8-9]{1} [0-9]{9}",val) and len(val)==10:
+        print("{} no is valid".format(val))
+    else:
+        print("entered no is invalid {}".format(val))
+
+#label
+from tkinter import *
+root=Tk()
+root.title("my gui with harry")
+#root.geometry("400x100")
+#important label options
+#text-adds teh text
+#bg-background
+#fg-foreground
+#font-sets the font
+#font=("comicsansms",19,"bold")
+#font="comicsansms 19 bold"
+#padx-x padding
+#pady-y padding
+#relief-border styling (sunken, raised,groove,ridge)
+title_label= Label(text="""Why Learning Python is useful?\n 
+Python is highly versatile. You can use it for both small and complex tasks, and it is used across many different industries\n — from its more common applications in data science and software engineering\n to environments like mobile app development, 
+artificial intelligence, and machine learning""",bg="red", fg="white",pady=34,font="comicsansms 9 bold",borderwidth=10,relief=RIDGE)
+
+
+#IMPORTANT pack attributes
+#anchor=nw,ne
+#side=top,bottom,left,right
+#fill=
+#padx=
+title_label.pack(side=TOP,fill=X,padx=100)
+root.mainloop()
+
+#button
+from tkinter import *
+root=Tk()
+root.geometry("500x150")
+def message1():
+    print("you clicked button1")
+def message2():
+    print("you clicked button2")
+def message3():
+    print("you clicked button3")
+def message4():
+    print("you clicked button4")
+var1=IntVar()
+frame= Frame(root,borderwidth=5,bg="aqua")
+frame.pack(side=LEFT,anchor="nw")
+b1= Button(frame,text="button1",fg="white",bg="black",command=message1)
+b1.pack(side=LEFT)
+b2= Checkbutton(frame,text="button2",fg="white",bg="black",command=message2)
+b2.pack(side=LEFT)
+b3= Radiobutton(frame,text="button3",fg="white",bg="black",variable=var1,value=2,command=message3)
+b3.pack(side=LEFT)
+b4= Button(frame,text="button4",fg="white",bg="black",command=message4)
+b4.pack(side=LEFT)
+root.mainloop()
+
+#messagebox
+from tkinter import *
+from tkinter import messagebox
+root=Tk()
+root.geometry("400x100")
+w=Label(root,text="message boxes")
+w.pack()
+messagebox.showinfo("information window",'fsdfsd')
+root.mainloop()
+messagebox.showerror("information window",'fsdfsd')
+root.mainloop()
+messagebox.showwarning("information window",'fsdfsd')
+root.mainloop()
+
+#multiwindow
+from tkinter import *
+root=Tk()
+def w1():
+    parent=Tk()
+    parent.title("2nd window")
+    parent.minsize(300,300)
+root.geometry("600x300")
+root.configure(bg="black")
+root.title("multi window")
+root.minsize(300,300)
+l1=Label(root,text="first name")
+l1.grid(row=0,column=0)
+l2=Label(root,text="last name")
+l2.grid(row=1,column=0)
+b1=Button(root,text="move to 2nd window",command=w1)
+b1.grid(row=5,column=7)
+root.mainloop()
+
+#framefrom tkinter import *
+root=Tk()
+root.geometry("655x333")
+root.title("Learning Frames")
+f1 = Frame(root, bg="aqua",borderwidth=6,relief=SUNKEN)
+f1.pack(side=LEFT,fill="y")
+
+l=Label(f1,text="project tkinter - pycharm")
+l.pack(pady=154)
+
+f2 = Frame(root, bg="aqua",borderwidth=6,relief=SUNKEN)
+f2.pack(side=TOP,fill="x",padx=3)
+
+l2=Label(f2,text="welcome to sublime text",font="helvetica 14 bold italic")
+l2.pack()
+
+
+
+
+
+root.mainloop()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#entry widget
+from tkinter import *
+root=Tk()
+
+def getval():
+    print("submitting form")
+
+    print(f"{namevalue.get(),phonevalue.get(),gendervalue.get(),emergencyvalue.get(),paymentmodevalue.get()}")
+    with open("record.txt","a") as f:
+        f.write((f"{namevalue.get(),phonevalue.get(),gendervalue.get(),emergencyvalue.get(),paymentmodevalue.get()}\n"))
+root.geometry("644x345")
+
+Label(root,text="Welcome to Rishi travels",font="comicsansms 15 bold",fg="black",pady=30).grid(row=0,column=3)
+
+name=Label(root,text="Name:")
+phone=Label(root,text="Phone:")
+gender=Label(root,text="Gender:")
+emergency=Label(root,text="Emergency contact:")
+paymentmode=Label(root,text="Payment mode:")
+
+name.grid(row=1,column=2)
+phone.grid(row=2,column=2)
+gender.grid(row=3,column=2)
+emergency.grid(row=4,column=2)
+paymentmode.grid(row=5,column=2)
+
+namevalue=StringVar()
+phonevalue=StringVar()
+gendervalue=StringVar()
+emergencyvalue=StringVar()
+paymentmodevalue=StringVar()
+foodservicevalue=IntVar()
+
+nameentry=Entry(root,textvariable=namevalue,bg="black",fg="white")
+phoneentry=Entry(root,textvariable=phonevalue,bg="black",fg="white")
+genderentry=Entry(root,textvariable=gendervalue,bg="black",fg="white")
+emeregencyentry=Entry(root,textvariable=emergencyvalue,bg="black",fg="white")
+paymenmtmodeentry=Entry(root,textvariable=paymentmodevalue,bg="black",fg="white")
+
+nameentry.grid(row=1,column=3)
+phoneentry.grid(row=2,column=3)
+genderentry.grid(row=3,column=3)
+emeregencyentry.grid(row=4,column=3)
+paymenmtmodeentry.grid(row=5,column=3)
+
+#checkbox
+foodservice=Checkbutton(text="Want to prebook your meals",variable=foodservicevalue)
+foodservice.grid(row=6,column=3)
+
+
+#button and packing and assigning it a command
+Button(text="submit to rishi tarvels",command=getval,pady=4).grid(row=7,column=3)
+root.mainloop()
+
+#canvas
+from tkinter import *
+root=Tk()
+canvas_width= 800
+canvas_height= 400
+root.geometry(f"{canvas_width}x{canvas_height}")
+can_widget= Canvas(root,width=canvas_width,height=canvas_height)
+can_widget.pack()
+#the line goes from x1 y1 to x2 y2
+can_widget.create_line(200,200,200,200)
+can_widget.create_rectangle(100,100,400,200)
+can_widget.create_polygon(50,250,400,200,100,300,fill="green")
+can_widget.create_oval(200,250,300,350)
+
+
+
+root.mainloop()
+#database connectivity
+import sqlite3
+conn_obj = sqlite3.connect("cs.db")
+cur_obj = conn_obj.cursor()
+
+#cur_obj.execute("create table computer(Roll_no INTEGER PRIMARY KEY NOT NULL,Name TEXT NOT NULL,sub1 INTEGER,sub2 INTEGER,sub3 INTEGER,sub4 INTEGER,sub5 INTEGER,sub6 INTEGER,sub7 INTEGER)")
+
+#cur_obj.execute("INSERT INTO computer(Roll_no,Name,sub1,sub2,sub3,sub4,sub5,sub6,sub7) VALUES(2315,'PRAVIN',43,54,65,34,56,43,54)")
+#cur_obj.execute("INSERT INTO computer(Roll_no,Name,sub1,sub2,sub3,sub4,sub5,sub6,sub7) VALUES(2311,'ANKUR',43,54,65,34,56,43,54)")
+#cur_obj.execute("INSERT INTO computer(Roll_no,Name,sub1,sub2,sub3,sub4,sub5,sub6,sub7) VALUES(2320,'BK',43,54,65,34,56,43,54)")
+#cur_obj.execute("INSERT INTO computer(Roll_no,Name,sub1,sub2,sub3,sub4,sub5,sub6,sub7) VALUES(2301,'OMKAR',43,54,65,34,56,43,54)")
+#cur_obj.execute("INSERT INTO computer(Roll_no,Name,sub1,sub2,sub3,sub4,sub5,sub6,sub7) VALUES(2333,'DEON',43,54,65,34,56,43,54)")
+
+r = cur_obj.execute("SELECT * from computer")
+print("ROLL NO\t NAME \t python  c++     HVD     OS     LINUX    COSS   STATISTICS ")
+for row in r:
+    print(row[0],"\t",row[1],'\t',row[2],'\t',row[3],'\t',row[4],'\t',row[5],'\t',row[6],'\t',row[7],'\t',row[8],'\n')
+
+r1=cur_obj.execute("SELECT * from computer where Roll_no=2301")
+
+
+
+for row in r:
+    print(row[0], "\t", row[1], '\t', row[2], '\t', row[3], '\t', row[4], '\t', row[5], '\t', row[6], '\t', row[7],
+          '\t', row[8], '\n')
+
+
+
+conn_obj.commit()
+conn_obj.close()
+
+#socket
+import socket
+hostname=socket.gethostname()
+ip_address=socket.gethostbyname(hostname)
+print(f"Hostname:{hostname}")
+print(f"IPAddress:{ip_address}")
+
+socket_obj=socket.socket()
+port=1052
+ip=(ip_address,port)
+socket_obj.bind(ip)
+socket_obj.listen(1)
+print(f"Port number {port} is bind to the server address {ip_address}")
